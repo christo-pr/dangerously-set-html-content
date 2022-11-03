@@ -67,7 +67,22 @@ This will also work for scripts with the `src` attribute set it
 
 ## Development
 
+After cloning the repo and install all deps, you can do to `example/` directory to install the example dependencies (the package will be a symlink to the file in `src/`)
+
+Once you're on that directory you can run:
+
+```
+npm start
+```
+And an example all will be open.
+
 ## Running unit test
+
+Run:
+
+```
+npm test
+```
 
 ## License
 
