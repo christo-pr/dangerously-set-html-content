@@ -1,6 +1,6 @@
 {
   "name": "dangerously-set-html-content",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Render raw html at your own risk!",
   "author": "christo-pr",
   "license": "MIT",
