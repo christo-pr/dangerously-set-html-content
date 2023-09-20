@@ -20,7 +20,7 @@ Here's a blog post that explain more in detail:
 
 React uses `dangerouslySetInnerHtml` prop to render raw html, and works pretty much well for almost all the cases, but what if your html has some `scripts` tags inside??
 
-When you use `dangerouslySetInnerHtml` on a component, internally react is using the `innerHtml` property of the node to set the content, which for [safety purposes](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#Security_considerations) doesn't execute any javascript.
+When you use `dangerouslySetInnerHtml` on a component, internally react is using the `innerHTML` property of the node to set the content, which for [safety purposes](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#Security_considerations) doesn't execute any javascript.
 
 This behavior seemed very odd to me (I mean the prop name contains the word `dangerously`, and also you need to pass an object with a `__html` propery, which is on purpose, so you really know what you doing), although it have totally sense now, still doesn't solve my issue
 
