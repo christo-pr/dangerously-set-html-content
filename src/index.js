@@ -6,7 +6,7 @@ function DangerouslySetHtmlContent({ html, dangerouslySetInnerHTML, ...rest }) {
   const isFirstRender = useRef(true)
 
   useEffect(() => {
-    if (!html || !divRef.current) throw new Error("html prop cant't be null")
+    if (!html || !divRef.current) throw new Error("html prop can't be null")
     if (!isFirstRender.current) return
     isFirstRender.current = false
 
