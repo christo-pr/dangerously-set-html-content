@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 import DangerouslySetHtmlContent from './'
 
-describe('<DangerousleSetHtmlContent />', () => {
+describe('<DangerouslySetHtmlContent />', () => {
   test('Should not render if no props passed', () => {
     expect(() => {
       render(<DangerouslySetHtmlContent html='' />)
