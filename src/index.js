@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+const { createElement, useEffect, useRef } = require('react')
 
 function DangerouslySetHtmlContent({ html, dangerouslySetInnerHTML, ...rest }) {
   // We remove 'dangerouslySetInnerHTML' from props passed to the div
@@ -17,8 +17,7 @@ function DangerouslySetHtmlContent({ html, dangerouslySetInnerHTML, ...rest }) {
     divRef.current.appendChild(slotHtml) // Append the new content
   }, [html, divRef])
 
-  // eslint-disable-next-line react/react-in-jsx-scope
-  return <div {...rest} ref={divRef} />
+  return createElement('div', { ...rest, ref: divRef })
 }
 
-export default DangerouslySetHtmlContent
+module.exports = DangerouslySetHtmlContent
