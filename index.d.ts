@@ -4,6 +4,7 @@ declare module 'dangerously-set-html-content' {
   interface DangerouslySetHtmlContentProps
     extends React.HTMLAttributes<HTMLDivElement> {
     html: string
+    allowRerender?: boolean
   }
 
   class DangerouslySetHtmlContent extends React.Component<

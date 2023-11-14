@@ -1,5 +1,5 @@
-import React from 'react'
-import { render } from '@testing-library/react'
+import React, { useState } from 'react'
+import { render, fireEvent } from '@testing-library/react'
 
 import DangerouslySetHtmlContent from './'
 
@@ -64,5 +64,77 @@ describe('<DangerouslySetHtmlContent />', () => {
 
     expect(container.querySelector('#inner')).not.toBe(null)
     expect(container.querySelector('.outer')).not.toBe(null)
+  })
+
+  test('Should allow rerender the component if "allowRerender" is passed in', () => {
+    const ExampleApp = () => {
+      const [content, setContent] = useState(
+        `<div data-testid="first">First render</div>`
+      )
+      const updatedHtml = `
+        <div data-testid="updated">Changed</div>
+      `
+
+      return (
+        <>
+          <DangerouslySetHtmlContent html={content} allowRerender />
+          <button
+            onClick={() => setContent(updatedHtml)}
+            data-testid='update-button'
+          >
+            Click
+          </button>
+        </>
+      )
+    }
+
+    const { queryByTestId } = render(<ExampleApp />)
+
+    expect(queryByTestId('first')).not.toBe(null)
+    expect(queryByTestId('first')?.textContent).toBe('First render')
+
+    // Click the button
+    fireEvent.click(queryByTestId('update-button'))
+
+    // The content should be updated
+    expect(queryByTestId('updated')).not.toBe(null)
+    expect(queryByTestId('updated')?.textContent).toBe('Changed')
+  })
+
+  test('Should NOT allow rerender the component if "allowRerender" is NOT passed in', () => {
+    const ExampleApp = () => {
+      const [content, setContent] = useState(
+        `<div data-testid="first">First render</div>`
+      )
+      const updatedHtml = `
+        <div data-testid="updated">Changed</div>
+      `
+
+      return (
+        <>
+          <DangerouslySetHtmlContent html={content} />
+          <button
+            onClick={() => setContent(updatedHtml)}
+            data-testid='update-button'
+          >
+            Click
+          </button>
+        </>
+      )
+    }
+
+    const { queryByTestId } = render(<ExampleApp />)
+
+    expect(queryByTestId('first')).not.toBe(null)
+    expect(queryByTestId('first')?.textContent).toBe('First render')
+
+    // Click the button
+    fireEvent.click(queryByTestId('update-button'))
+
+    // The content should not be updated
+    expect(queryByTestId('updated')).toBe(null)
+    // And remains the same
+    expect(queryByTestId('first')).not.toBe(null)
+    expect(queryByTestId('first')?.textContent).toBe('First render')
   })
 })

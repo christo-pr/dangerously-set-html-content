@@ -17,7 +17,11 @@ export function App() {
 
   return (
     <div>
-      <InnerHTML style={{ color: 'white', background: 'red' }} html={content} />
+      <InnerHTML
+        style={{ color: 'white', background: 'red' }}
+        html={content}
+        allowRerender
+      />
       <button onClick={() => setContent(updatedHtml)}>
         Hit here to see magic!
       </button>

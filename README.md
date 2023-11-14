@@ -63,6 +63,15 @@ function Example {
 
 This will also work for scripts with the `src` attribute set it
 
+> Note: By default this component only inserts the js that you pass in **on the first render**, after that it doesn't rerender. See https://github.com/christo-pr/dangerously-set-html-content/pull/7. You can pass `allowRerender` prop to rerender the component
+
+## Available Props
+
+|      Prop       | Required |  Value  |                      Description                      |
+| :-------------: | :------: | :-----: | :---------------------------------------------------: |
+|     `html`      | **Yes**  | String  |       The stringified code you want to execute        |
+| `allowRerender` |    No    | Boolean | If set to `true` will allow to rerender the component |
+
 ## Development
 
 After cloning the repo and install all deps, you can do to `example/` directory to install the example dependencies (the package will be a symlink to the file in `src/`)
