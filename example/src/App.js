@@ -3,7 +3,7 @@ import InnerHTML from 'dangerously-set-html-content'
 
 export function App() {
   const [content, setContent] = useState(`
-    <div>This wil be rendered</div>
+    <div>This will be rendered</div>
     <script>
       alert('testing')
     </script>
