@@ -16,7 +16,7 @@
     "test:watch": "react-scripts test --env=jsdom"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": ">=18.2.0"
   },
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
